@@ -31,13 +31,17 @@ class _SemakanSamanScreenState extends State<SemakanSamanScreen> {
             width: MediaQuery.of(context).size.width * 0.7,
             child: Row(
               children: [
-                Image.asset('assets/malaysia.png', width: 50, height: 60),
+                Image.asset(
+                  'assets/images/malaysia.png',
+                  width: 50,
+                  height: 60,
+                ),
                 const SizedBox(width: 8),
-                Image.asset('assets/jpj.png', width: 40, height: 40),
+                Image.asset('assets/images/jpj.png', width: 40, height: 40),
                 const SizedBox(width: 8),
                 const Icon(Icons.language, color: Colors.white, size: 40),
                 const SizedBox(width: 16),
-                Image.asset('assets/faq.png', width: 40, height: 40),
+                Image.asset('assets/images/faq.png', width: 40, height: 40),
                 const SizedBox(width: 8),
               ],
             ),
@@ -89,7 +93,7 @@ class _SemakanSamanScreenState extends State<SemakanSamanScreen> {
 
                 // User name
                 const Text(
-                  'Mohamad Salah Bin Hazard',
+                  'Mohamad betul Bin Hazard',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 10),
