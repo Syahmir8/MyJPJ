@@ -93,7 +93,7 @@ class _SemakanSamanScreenState extends State<SemakanSamanScreen> {
 
                 // User name
                 const Text(
-                  'Mohamad betul Bin Hazard',
+                  'Mohamad messi Bin Hazard',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 10),
