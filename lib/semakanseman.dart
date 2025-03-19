@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'paparan_utama.dart';
+import 'package:myjpj/direktori.dart';
+import 'package:myjpj/paparan_utama.dart';
+import 'package:myjpj/peti_masuk.dart';
+import 'package:myjpj/profil.dart';
 
-class SemakanSamanScreen extends StatefulWidget {
-  const SemakanSamanScreen({Key? key}) : super(key: key);
+class SemakanSaman extends StatefulWidget {
+  const SemakanSaman({Key? key}) : super(key: key);
 
   @override
-  State<SemakanSamanScreen> createState() => _SemakanSamanScreenState();
+  State<SemakanSaman> createState() => _SemakanSamanState();
 }
 
-class _SemakanSamanScreenState extends State<SemakanSamanScreen> {
+class _SemakanSamanState extends State<SemakanSaman> {
   final TextEditingController _registrationController = TextEditingController();
 
   @override
@@ -19,39 +24,40 @@ class _SemakanSamanScreenState extends State<SemakanSamanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF2F3EAA),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        actions: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.7,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(55),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Color(0xFF2B32B2),
+          flexibleSpace: Padding(
+            padding: EdgeInsets.only(top: 65, left: 12, right: 12),
             child: Row(
               children: [
-                Image.asset(
-                  'assets/images/malaysia.png',
-                  width: 50,
-                  height: 60,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => PaparanUtama()),
+                      (route) => false,
+                    );
+                  },
+                  child: Icon(Icons.arrow_back, size: 30, color: Colors.white),
                 ),
-                const SizedBox(width: 8),
-                Image.asset('assets/images/jpj.png', width: 40, height: 40),
-                const SizedBox(width: 8),
-                const Icon(Icons.language, color: Colors.white, size: 40),
-                const SizedBox(width: 16),
-                Image.asset('assets/images/faq.png', width: 40, height: 40),
-                const SizedBox(width: 8),
+                SizedBox(width: 8),
+                Image.asset('assets/jatanegara.png',
+                    width: 40, height: 40, fit: BoxFit.cover),
+                SizedBox(width: 8),
+                Image.asset('assets/jpjlogo.png',
+                    width: 40, height: 40, fit: BoxFit.cover),
+                SizedBox(width: 9),
+                Icon(Icons.language_outlined, size: 30, color: Colors.white),
+                SizedBox(width: 10),
+                Icon(Icons.help, size: 30, color: Colors.white),
+                const Spacer(),
+                Icon(Icons.menu, size: 30, color: Colors.white),
               ],
             ),
           ),
-
-          IconButton(
-            icon: const Icon(Icons.menu, color: Colors.white, size: 40),
-            onPressed: () {},
-          ),
-        ],
+        ),
       ),
       body: Column(
         children: [
@@ -93,7 +99,7 @@ class _SemakanSamanScreenState extends State<SemakanSamanScreen> {
 
                 // User name
                 const Text(
-                  'Mohamad messi Bin Hazard',
+                  'Mohamad Salah Bin Hazard',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 10),
@@ -182,63 +188,55 @@ class _SemakanSamanScreenState extends State<SemakanSamanScreen> {
 
           // Spacer to push the bottom nav bar to the bottom
           const Spacer(),
-
-          // Bottom navigation bar
-          Container(
-            height: 60,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, -1),
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildNavItem(Icons.home, 'Utama', false),
-                _buildNavItem(Icons.mail, 'Peti Masuk', false),
-                _buildNavItem(Icons.people, 'Direktori', false),
-                _buildNavItem(Icons.person, 'Profil', true),
-              ],
-            ),
-          ),
         ],
       ),
-    );
-  }
-
-  Widget _buildNavItem(IconData icon, String label, bool isSelected) {
-    return Container(
-      width: 80,
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        border:
-            isSelected
-                ? const Border(
-                  bottom: BorderSide(color: Color(0xFF2F3EAA), width: 3),
-                )
-                : null,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: isSelected ? const Color(0xFF2F3EAA) : Colors.grey,
-            size: 24,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFF2B32B2),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0, // You may need to update this dynamically
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PaparanUtama()),
+              (route) => false,
+            );
+          } else if (index == 1) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PetiMasuk()),
+              (route) => false,
+            );
+          } else if (index == 2) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Direktori()),
+              (route) => false,
+            );
+          } else if (index == 3) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Profil()),
+              (route) => false,
+            );
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_filled),
+            label: 'Utama',
           ),
-          const SizedBox(height: 2),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              color: isSelected ? const Color(0xFF2F3EAA) : Colors.grey,
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail_rounded),
+            label: 'Peti Masuk',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pin_drop_rounded),
+            label: 'Direktori',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profil',
           ),
         ],
       ),
@@ -262,7 +260,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFF2F3EAA),
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2F3EAA)),
       ),
-      home: const SemakanSamanScreen(),
+      home: const SemakanSaman(),
     );
   }
 }
