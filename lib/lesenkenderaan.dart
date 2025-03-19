@@ -58,7 +58,7 @@ class VehicleInfoPage extends StatelessWidget {
             const SizedBox(height: 10),
             _buildVehicleDropdown(),
             const SizedBox(height: 10),
-            const Text('Dijana pada 12-03-2025', style: TextStyle(color: Colors.grey)),
+            const Text('Dijana pada 12-03-2025 ACAP', style: TextStyle(color: Colors.grey)),
             const SizedBox(height: 30),
             const Text('Tiada Maklumat Kenderaan', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           ],
