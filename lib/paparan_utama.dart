@@ -12,18 +12,18 @@ class PaparanUtama extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(45),
+        preferredSize: Size.fromHeight(90),
         child: AppBar(
           backgroundColor: Color(0xFF2B32B2),
           flexibleSpace: Padding(
-            padding: EdgeInsets.only(top: 65, left: 12, right: 12),
+            padding: EdgeInsets.only(top: 45, left: 12, right: 12),
             child: Row(
               children: [
                 Image.asset('assets/jatanegara.png',
-                    width: 40, height: 40, fit: BoxFit.cover),
+                    width: 40, height: 40 ),
                 SizedBox(width: 8),
                 Image.asset('assets/jpjlogo.png',
-                    width: 40, height: 40, fit: BoxFit.cover),
+                    width: 40, height: 40),
                 SizedBox(width: 9),
                 Icon(Icons.language_outlined, size: 30, color: Colors.white),
                 SizedBox(width: 10),

@@ -17,7 +17,7 @@ class _PembaharuanLesenState extends State<PembaharuanLesen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(55),
+        preferredSize: Size.fromHeight(90),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Color(0xFF2B32B2),
