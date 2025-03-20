@@ -9,7 +9,7 @@ class Direktori extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(45),
+        preferredSize: Size.fromHeight(90),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Color(0xFF2B32B2),
@@ -50,12 +50,9 @@ class Direktori extends StatelessWidget {
           ),
         ),
       ),
-      
-
-
-        body: Column(
-          children: [
-            ClipRRect(
+      body: Column(
+        children: [
+          ClipRRect(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(18),
               bottomRight: Radius.circular(18),
@@ -63,7 +60,10 @@ class Direktori extends StatelessWidget {
             child: Container(
               color: const Color(0xFF2D2DB1),
               width: double.infinity, // Ensures the container stretches fully
-              padding: const EdgeInsets.only(left: 35, top: 10, bottom: 24), // Adds spacing around the text
+              padding: const EdgeInsets.only(
+                  left: 35,
+                  top: 10,
+                  bottom: 24), // Adds spacing around the text
               child: Column(
                 crossAxisAlignment:
                     CrossAxisAlignment.start, // Aligns text to the left
@@ -87,502 +87,571 @@ class Direktori extends StatelessWidget {
                 ],
               ),
             ),
-            ),
-           
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 50, right: 50, top: 10), 
-                  child: Column(
-                    children: [
-                      Card( //johor
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/johor.jpg'),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 50, right: 50, top: 10),
+                child: Column(
+                  children: [
+                    Card(
+                      //johor
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/johor.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Johor',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Johor',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //kedah
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/kedah.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //kedah
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/kedah.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Kedah',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Kedah',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //kelantan
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/kelantan.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //kelantan
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage:
+                                  AssetImage('assets/kelantan.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Kelantan',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Kelantan',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //melaka
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/melaka.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //melaka
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/melaka.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Melaka',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Melaka',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //negeri sembilan
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/ns.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //negeri sembilan
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/ns.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            Text(
+                              'Negeri Sembilan',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Negeri Sembilan',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                              softWrap: true, // Ensures words wrap properly
+                              overflow: TextOverflow
+                                  .visible, // Makes sure no text is cut off
+                            )
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //pahang
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/pahang.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //pahang
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/pahang.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            Text(
+                              'Pahang',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Pahang',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                              softWrap: true, // Ensures words wrap properly
+                              overflow: TextOverflow
+                                  .visible, // Makes sure no text is cut off
+                            )
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //pulau pinang
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/penang.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //pulau pinang
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/penang.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            Text(
+                              'Pulau Pinang',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Pulau Pinang',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                              softWrap: true, // Ensures words wrap properly
+                              overflow: TextOverflow
+                                  .visible, // Makes sure no text is cut off
+                            )
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //perak
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/perak.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //perak
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/perak.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Perak',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Perak',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //perlis
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/perlis.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //perlis
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/perlis.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Perlis',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Perlis',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //selangor
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/selangor.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //selangor
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage:
+                                  AssetImage('assets/selangor.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Selangor',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Selangor',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //terengganu
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/terengganu.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //terengganu
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage:
+                                  AssetImage('assets/terengganu.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Terengganu',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Terengganu',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //sabah
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/sabah.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //sabah
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/sabah.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Sabah',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Sabah',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //sarawak
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/sarawak.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //sarawak
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/sarawak.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            const Text(
+                              'Johor',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'Johor',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //kl
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/kl.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //kl
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/kl.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            Text(
+                              'W.P.Kuala Lumpur',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'W.P.Kuala Lumpur',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                              softWrap: true, // Ensures words wrap properly
+                              overflow: TextOverflow
+                                  .visible, // Makes sure no text is cut off
+                            )
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //labuan
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/labuan.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //labuan
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: AssetImage('assets/labuan.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            Text(
+                              'W.P.Labuan',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'W.P.Labuan',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                              softWrap: true, // Ensures words wrap properly
+                              overflow: TextOverflow
+                                  .visible, // Makes sure no text is cut off
+                            )
+                          ],
                         ),
                       ),
-                      /////////////////////////////////////////////////////////////////////////////////////////////////
-                      Card( //putrajaya
-                        elevation: 4, // Adds shadow for a better look
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Rounded corners
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16), // Spacing inside the card
-                          child: Row(
-                            children: [
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/putrajaya.jpg'),
+                    ),
+                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                    Card(
+                      //putrajaya
+                      elevation: 4, // Adds shadow for a better look
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // Rounded corners
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.all(16), // Spacing inside the card
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.transparent,
+                              backgroundImage:
+                                  AssetImage('assets/putrajaya.jpg'),
+                            ),
+                            const SizedBox(width: 20),
+                            Text(
+                              'W.P.Putrajaya',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
                               ),
-                              const SizedBox(width: 20),
-                              const Text(
-                                'W.P.Putrajaya',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                              softWrap: true, // Ensures words wrap properly
+                              overflow: TextOverflow
+                                  .visible, // Makes sure no text is cut off
+                            )
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
-
-
-        bottomNavigationBar: BottomNavigationBar(
-  backgroundColor: Color(0xFF2B32B2),
-  selectedItemColor: Colors.white,
-  unselectedItemColor: Colors.white70,
-  type: BottomNavigationBarType.fixed,
-  currentIndex: 0, // You may need to update this dynamically
-  onTap: (index) {
-    if (index == 0) {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => PaparanUtama()),
-        (route) => false,
-      );
-    } else if (index == 1) { // Corrected index for "Profil"
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => PetiMasuk()), 
-        (route) => false,
-      );
-    } else if (index == 2) {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => Direktori()), 
-        (route) => false,
-      );
-    } else if (index == 3) { // Corrected index for "Profil"
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => Profil()), 
-        (route) => false,
-      );
-    }
-  },
-  items: [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home_filled),
-      label: 'Utama',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.mail_rounded),
-      label: 'Peti Masuk',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.pin_drop_rounded),
-      label: 'Direktori',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person),
-      label: 'Profil',
-    ),
-  ],
-),
-      );
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFF2B32B2),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0, // You may need to update this dynamically
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PaparanUtama()),
+              (route) => false,
+            );
+          } else if (index == 1) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PetiMasuk()),
+              (route) => false,
+            );
+          } else if (index == 2) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Direktori()),
+              (route) => false,
+            );
+          } else if (index == 3) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Profil()),
+              (route) => false,
+            );
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_filled),
+            label: 'Utama',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail_rounded),
+            label: 'Peti Masuk',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pin_drop_rounded),
+            label: 'Direktori',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profil',
+          ),
+        ],
+      ),
+    );
   }
 }

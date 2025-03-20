@@ -11,7 +11,7 @@ class Profil extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(45),
+        preferredSize: Size.fromHeight(90),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Color(0xFF2B32B2),
