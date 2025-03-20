@@ -11,7 +11,7 @@ class PaparanUtama extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90),
+        preferredSize: Size.fromHeight(45),
         child: AppBar(
           backgroundColor: Color(0xFF2B32B2),
           flexibleSpace: Padding(
