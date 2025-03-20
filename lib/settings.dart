@@ -1,198 +1,152 @@
 import 'package:flutter/material.dart';
+import 'kemas_kini.dart';
+import 'kata_laluan.dart';
 import 'paparan_utama.dart';
-import 'package:myjpj/direktori.dart';
-import 'package:myjpj/paparan_utama.dart';
-import 'package:myjpj/peti_masuk.dart';
-import 'package:myjpj/profil.dart';
 
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90),
-        child: AppBar(
-          backgroundColor: Color(0xFF2B32B2),
-          flexibleSpace: Padding(
-            padding: EdgeInsets.only(top: 65, left: 12, right: 12),
-            child: Row(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          // Top Section
+          Container(
+            padding: EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 20),
+            decoration: BoxDecoration(
+              color: Color(0xFF2B32B2),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(18),
+                bottomRight: Radius.circular(18),
+              ),
+            ),
+            child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => PaparanUtama()),
-                      (route) => false,
-                    );
-                  },
-                  child: Icon(Icons.arrow_back, size: 30, color: Colors.white),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaparanUtama()),
+                      );
+                    },
+                    child: Icon(Icons.close, color: Colors.white, size: 28),
+                  ),
                 ),
-                SizedBox(width: 8),
-                Image.asset('assets/jatanegara.png',
-                    width: 40, height: 40, fit: BoxFit.cover),
-                SizedBox(width: 8),
-                Image.asset('assets/jpjlogo.png',
-                    width: 40, height: 40, fit: BoxFit.cover),
-                SizedBox(width: 9),
-                Icon(Icons.language_outlined, size: 30, color: Colors.white),
-                SizedBox(width: 10),
-                Icon(Icons.help, size: 30, color: Colors.white),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Settings()),
-                    );
-                  },
-                  child: Icon(Icons.menu, size: 30, color: Colors.white),
+                SizedBox(height: 10),
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage: AssetImage('assets/picture1.png'),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'SYAFIQA ANEESA BINTI JOHARI',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '78101898726',
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'Orang Awam Malaysia',
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 14,
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-      ),
-      body: Column(
-        children: [
-          const TitleSection(title: 'Kemaskini Profil'),
-          const KemaskiniProfil(),
-        ],
-      ),
-      bottomNavigationBar: CustomBottomNavBar(),
-    );
-  }
-}
-
-
-class TitleSection extends StatelessWidget {
-  const TitleSection({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Color(0xFF2B32B2),
-      padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 20.0),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+          SizedBox(height: 20),
+          
+          // Settings Options
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              children: [
+                _buildSettingsOption(
+                  context,
+                  Icons.person,
+                  'Kemas Kini Profil',
+                  KemasKini(),
+                ),
+                _buildSettingsOption(
+                  context,
+                  Icons.lock,
+                  'Tukar Kata Laluan',
+                  KataLaluan(),
+                ),
+                _buildSettingsOption(
+                  context,
+                  Icons.policy,
+                  'Dasar Privasi',
+                  null,
+                ),
+                _buildSettingsOption(
+                  context,
+                  Icons.description,
+                  'Terma Penggunaan',
+                  null,
+                ),
+                _buildSettingsOption(
+                  context,
+                  Icons.delete,
+                  'Penutupan Akaun',
+                  null,
+                ),
+                _buildSettingsOption(
+                  context,
+                  Icons.share,
+                  'Kongsi Aplikasi',
+                  null,
+                ),
+                _buildSettingsOption(
+                  context,
+                  Icons.exit_to_app,
+                  'Log Keluar',
+                  null,
+                  isLogout: true,
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-}
 
-class KemaskiniProfil extends StatelessWidget {
-  const KemaskiniProfil({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 30.0),
-      child: Center(
-        child: Column(
-          children: [
-            buildProfileField(Icons.person_outline_rounded, 'No. MyKad', '717171-11-3333'),
-            SizedBox(height: 50),
-            buildProfileField(Icons.person_outline_rounded, 'Nama', 'SYAFIQA ANEESA'),
-            SizedBox(height: 50),
-            buildProfileField(Icons.email_outlined, 'Email', 'irfani.shamsul@gmail.com'),
-            SizedBox(height: 50),
-            Text(
-              'Sila kemaskini maklumat anda di Portal Awam JPJ',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
-          ],
+  Widget _buildSettingsOption(BuildContext context, IconData icon, String title, Widget? page, {bool isLogout = false}) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 3,
+      child: ListTile(
+        leading: Icon(icon, color: isLogout ? Colors.red : Colors.black),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: isLogout ? Colors.red : Colors.black,
+          ),
         ),
+        trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+        onTap: page != null
+            ? () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => page),
+                );
+              }
+            : null,
       ),
-    );
-  }
-
-  Widget buildProfileField(IconData icon, String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
-        const SizedBox(height: 8),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 14),
-          decoration: BoxDecoration(
-            border: Border.all(color: Color(0xFFE0E0E0)),
-            borderRadius: BorderRadius.circular(6),
-            color: Color(0xFFF7F5FF),
-          ),
-          child: Row(
-            children: [
-              Icon(icon, color: Color(0xFF2B32B2)),
-              SizedBox(width: 5),
-              Text(value, style: TextStyle(fontSize: 16, color: Colors.black87)),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Color(0xFF2B32B2),
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white70,
-      type: BottomNavigationBarType.fixed,
-      currentIndex: 0, // You may need to update this dynamically
-      onTap: (index) {
-        if (index == 0) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => PaparanUtama()),
-            (route) => false,
-          );
-        } else if (index == 1) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => PetiMasuk()),
-            (route) => false,
-          );
-        } else if (index == 2) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => Direktori()),
-            (route) => false,
-          );
-        } else if (index == 3) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => Profil()),
-            (route) => false,
-          );
-        }
-      },
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled),
-          label: 'Utama',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.mail_rounded),
-          label: 'Peti Masuk',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.pin_drop_rounded),
-          label: 'Direktori',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profil',
-        ),
-      ],
     );
   }
 }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'paparan_utama.dart';
+import 'package:myjpj/peti_masuk.dart';
+import 'package:myjpj/profil.dart';
+import 'settings.dart';
+import 'direktori.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,17 +16,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ChangePasswordScreen(),
+      home: KataLaluan(),
     );
   }
 }
 
-class ChangePasswordScreen extends StatefulWidget {
+class KataLaluan extends StatefulWidget {
   @override
-  _ChangePasswordScreenState createState() => _ChangePasswordScreenState();
+  _KataLaluanState createState() => _KataLaluanState();
 }
 
-class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+class _KataLaluanState extends State<KataLaluan> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _oldPasswordController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
@@ -34,80 +39,79 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(90),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Color(0xFF2B32B2),
+          flexibleSpace: Padding(
+            padding: EdgeInsets.only(top: 65, left: 12, right: 12),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => PaparanUtama()),
+                      (route) => false,
+                    );
+                  },
+                  child: Icon(Icons.arrow_back, size: 30, color: Colors.white),
+                ),
+                SizedBox(width: 8),
+                Image.asset('assets/jatanegara.png',
+                    width: 40, height: 40, fit: BoxFit.cover),
+                SizedBox(width: 8),
+                Image.asset('assets/jpjlogo.png',
+                    width: 40, height: 40, fit: BoxFit.cover),
+                SizedBox(width: 9),
+                Icon(Icons.language_outlined, size: 30, color: Colors.white),
+                SizedBox(width: 10),
+                Icon(Icons.help, size: 30, color: Colors.white),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Settings()),
+                    );
+                  },
+                  child: Icon(Icons.menu, size: 30, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: Column(
         children: [
+          
           // Custom Top Bar
-          Container(
-            color: const Color(0xFF283593), // Deep blue color
-            child: SafeArea(
-              bottom: false,
+          
+                  ClipRRect(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(18),
+              bottomRight: Radius.circular(18),
+            ),
+            child: Container(
+              color: const Color(0xFF2B32B2),
+              width: double.infinity, // Ensures the container stretches fully
+              padding: const EdgeInsets.only(left: 35, top: 10, bottom: 24), // Adds spacing around the text
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Aligns text to the left
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 8.0,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Left side icons
-                        Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(width: 15),
-                            Image.asset('assets/government.png', height: 45),
-                            const SizedBox(width: 10),
-                            Image.asset('assets/jpj.png', height: 45),
-                            const SizedBox(width: 10),
-                            const Icon(
-                              Icons.language,
-                              color: Colors.white,
-                              size: 35,
-                            ),
-                            const SizedBox(width: 6),
-                            const Icon(
-                              Icons.question_answer,
-                              color: Colors.white,
-                              size: 35,
-                            ),
-                          ],
-                        ),
-                        // Right side menu icon
-                        const Icon(Icons.menu, color: Colors.white, size: 28),
-                      ],
+                  const Text(
+                    'Tukar Kata Laluan', // Fixed typo from 'Direkroti'
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Divider(
-                    color: Colors.white24,
-                    height: 1,
-                    thickness: 0.5,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Tukar Kata Laluan',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  
                 ],
               ),
             ),
-          ),
+            ),
 
           // Password Change Form Section
           Expanded(
@@ -135,7 +139,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         style: TextStyle(color: Colors.black87),
                       ),
                       const SizedBox(height: 20),
-
                       _buildPasswordField(
                         'Kata Laluan Lama',
                         _oldPasswordController,
@@ -147,7 +150,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         },
                       ),
                       const SizedBox(height: 10),
-
                       _buildPasswordField(
                         'Kata Laluan Baharu',
                         _newPasswordController,
@@ -159,7 +161,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         },
                       ),
                       const SizedBox(height: 10),
-
                       _buildPasswordField(
                         'Pengesahan Kata Laluan Baharu',
                         _confirmPasswordController,
@@ -171,23 +172,21 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         },
                       ),
                       const SizedBox(height: 20),
-
                       Center(
                         child: TextButton(
                           onPressed: () {},
                           child: const Text(
                             'Lupa Kata Laluan?',
-                            style: TextStyle(color: Color(0xFF1929B3)),
+                            style: TextStyle(color: Color.fromARGB(255, 41, 61, 243)),
                           ),
                         ),
                       ),
                       const SizedBox(height: 10),
-
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1929B3),
+                            backgroundColor: const Color.fromARGB(255, 41, 61, 243),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -218,6 +217,56 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
             ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFF2B32B2),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PaparanUtama()),
+              (route) => false,
+            );
+          } else if (index == 1) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PetiMasuk()),
+              (route) => false,
+            );
+          } else if (index == 2) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Direktori()),
+              (route) => false,
+            );
+          } else if (index == 3) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Profil()),
+              (route) => false,
+            );
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_filled),
+            label: 'Utama',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail_rounded),
+            label: 'Peti Masuk',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pin_drop_rounded),
+            label: 'Direktori',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profil',
           ),
         ],
       ),

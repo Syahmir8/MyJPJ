@@ -4,7 +4,6 @@ import 'package:myjpj/direktori.dart';
 import 'package:myjpj/settings.dart';
 import 'package:myjpj/peti_masuk.dart';
 import 'package:myjpj/profil.dart';
-import 'semakansaman.dart';
 
 class PaparanUtama extends StatelessWidget {
   @override
@@ -19,11 +18,9 @@ class PaparanUtama extends StatelessWidget {
             padding: EdgeInsets.only(top: 45, left: 12, right: 12),
             child: Row(
               children: [
-                Image.asset('assets/jatanegara.png',
-                    width: 40, height: 40 ),
+                Image.asset('assets/jatanegara.png', width: 40, height: 40),
                 SizedBox(width: 8),
-                Image.asset('assets/jpjlogo.png',
-                    width: 40, height: 40),
+                Image.asset('assets/jpjlogo.png', width: 40, height: 40),
                 SizedBox(width: 9),
                 Icon(Icons.language_outlined, size: 30, color: Colors.white),
                 SizedBox(width: 10),

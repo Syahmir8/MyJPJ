@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'paparan_utama.dart';
 import 'package:myjpj/direktori.dart';
-import 'package:myjpj/paparan_utama.dart';
 import 'package:myjpj/peti_masuk.dart';
 import 'package:myjpj/settings.dart';
+import 'package:myjpj/lesenkenderaan.dart';
+import 'package:myjpj/pemilikan.dart';
 
 class Profil extends StatelessWidget {
   @override
@@ -38,7 +39,14 @@ class Profil extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(Icons.help, size: 30, color: Colors.white),
                 const Spacer(),
-                Icon(Icons.menu, size: 30, color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Settings()),
+                    );
+                  },
+                  child: Icon(Icons.menu, size: 30, color: Colors.white),
+                ),
               ],
             ),
           ),
@@ -109,9 +117,11 @@ class Profil extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    licenseTab("Lesen Memandu", true),
-                    licenseTab("Lesen Kenderaan Motor", false),
-                    licenseTab("Sijil Pemilikan Kenderaan", false),
+                    licenseTab(context, "Lesen Memandu", true, null),
+                    licenseTab(context, "Lesen Kenderaan Motor", false,
+                        LesenKenderaan()),
+                    licenseTab(context, "Sijil Pemilikan Kenderaan", false,
+                        Pemilikan()),
                   ],
                 ),
               ),
@@ -265,21 +275,28 @@ class Profil extends StatelessWidget {
     );
   }
 
-  static Widget licenseTab(String title, bool isSelected) {
+  static Widget licenseTab(
+      BuildContext context, String title, bool isSelected, Widget? page) {
     return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-          color: isSelected ? const Color(0xFF2B32B2) : Colors.white,
-        ),
-        child: Center(
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: isSelected ? Colors.white : Colors.black,
-              fontWeight: FontWeight.bold,
+      child: GestureDetector(
+        onTap: page != null
+            ? () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => page))
+            : null,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black),
+            color: isSelected ? const Color(0xFF2B32B2) : Colors.white,
+          ),
+          child: Center(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'paparan_utama.dart';
-import 'package:myjpj/paparan_utama.dart';
 import 'package:myjpj/peti_masuk.dart';
 import 'package:myjpj/profil.dart';
+import 'settings.dart';
 
 class Direktori extends StatelessWidget {
   @override
@@ -37,7 +37,14 @@ class Direktori extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(Icons.help, size: 30, color: Colors.white),
                 const Spacer(),
-                Icon(Icons.menu, size: 30, color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Settings()),
+                    );
+                  },
+                  child: Icon(Icons.menu, size: 30, color: Colors.white),
+                ),
               ],
             ),
           ),

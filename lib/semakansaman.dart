@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'paparan_utama.dart';
 import 'package:myjpj/direktori.dart';
-import 'package:myjpj/paparan_utama.dart';
 import 'package:myjpj/peti_masuk.dart';
 import 'package:myjpj/profil.dart';
+import 'settings.dart';
 
 class SemakanSaman extends StatefulWidget {
   const SemakanSaman({Key? key}) : super(key: key);
@@ -53,7 +53,14 @@ class _SemakanSamanState extends State<SemakanSaman> {
                 SizedBox(width: 10),
                 Icon(Icons.help, size: 30, color: Colors.white),
                 const Spacer(),
-                Icon(Icons.menu, size: 30, color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Settings()),
+                    );
+                  },
+                  child: Icon(Icons.menu, size: 30, color: Colors.white),
+                ),
               ],
             ),
           ),
@@ -62,19 +69,31 @@ class _SemakanSamanState extends State<SemakanSaman> {
       body: Column(
         children: [
           // Blue header
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            color: const Color(0xFF2F3EAA),
-            child: const Text(
-              'Semakan Saman',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(18),
+              bottomRight: Radius.circular(18),
+            ),
+            child: Container(
+              color: const Color(0xFF2D2DB1),
+              width: double.infinity, // Ensures the container stretches fully
+              padding: const EdgeInsets.only(left: 35, top: 10, bottom: 24), // Adds spacing around the text
+              child: Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Aligns text to the left
+                children: [
+                  const Text(
+                    'Semakan Saman', // Fixed typo from 'Direkroti'
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
+            ),
 
           // User profile section
           Container(
@@ -186,8 +205,6 @@ class _SemakanSamanState extends State<SemakanSaman> {
             ),
           ),
 
-          // Spacer to push the bottom nav bar to the bottom
-          const Spacer(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

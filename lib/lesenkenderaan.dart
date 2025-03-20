@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:myjpj/direktori.dart';
+import 'package:myjpj/settings.dart';
+import 'package:myjpj/peti_masuk.dart';
+import 'package:myjpj/profil.dart';
+import 'paparan_utama.dart';
+import 'pemilikan.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,60 +17,141 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const VehicleInfoPage(),
+      home: const LesenKenderaan(),
     );
   }
 }
 
-class VehicleInfoPage extends StatelessWidget {
-  const VehicleInfoPage({super.key});
+class LesenKenderaan extends StatelessWidget {
+  const LesenKenderaan({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[900],
-        title: Row(
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () {},
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(90),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Color(0xFF2B32B2),
+          flexibleSpace: Padding(
+            padding: EdgeInsets.only(top: 65, left: 12, right: 12),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => PaparanUtama()),
+                      (route) => false,
+                    );
+                  },
+                  child: Icon(Icons.arrow_back, size: 30, color: Colors.white),
+                ),
+                SizedBox(width: 8),
+                Image.asset('assets/jatanegara.png',
+                    width: 40, height: 40, fit: BoxFit.cover),
+                SizedBox(width: 8),
+                Image.asset('assets/jpjlogo.png',
+                    width: 40, height: 40, fit: BoxFit.cover),
+                SizedBox(width: 9),
+                Icon(Icons.language_outlined, size: 30, color: Colors.white),
+                SizedBox(width: 10),
+                Icon(Icons.help, size: 30, color: Colors.white),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Settings()),
+                    );
+                  },
+                  child: Icon(Icons.menu, size: 30, color: Colors.white),
+                ),
+              ],
             ),
-            Image.asset('assets/jata_negara.png', height: 30),
-            const SizedBox(width: 8),
-            Image.asset('assets/jpj_logo.png', height: 30),
-            const SizedBox(width: 8),
-            const Icon(Icons.language, color: Colors.white),
-            const SizedBox(width: 8),
-            const Icon(Icons.question_answer, color: Colors.white),
-          ],
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 8.0),
-            child: Icon(Icons.menu, color: Colors.white),
           ),
-        ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             _buildInfoSection(),
             const SizedBox(height: 10),
-            _buildTabButtons(),
+            Container(
+              height: 90,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    licenseTab(context, "Lesen Memandu", false, Profil()),
+                    licenseTab(context, "Lesen Kenderaan Motor", true, null),
+                    licenseTab(context, "Sijil Pemilikan Kenderaan", false, Pemilikan()),
+                  ],
+                ),
+              ),
+            ),
             const SizedBox(height: 20),
             _buildRegenerateButton(),
             const SizedBox(height: 10),
             _buildVehicleDropdown(),
             const SizedBox(height: 10),
-            const Text('Dijana pada 12-03-2025', style: TextStyle(color: Colors.grey)),
+            const Text('Dijana pada 12-03-2025',
+                style: TextStyle(color: Colors.grey)),
             const SizedBox(height: 30),
-            const Text('Tiada Maklumat Kenderaan syahmi', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            const Text('Tiada Maklumat Kenderaan',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFF2B32B2),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PaparanUtama()),
+              (route) => false,
+            );
+          } else if (index == 1) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => PetiMasuk()),
+              (route) => false,
+            );
+          } else if (index == 2) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Direktori()),
+              (route) => false,
+            );
+          } else if (index == 3) {
+            // Corrected index for "Profil"
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => Profil()),
+              (route) => false,
+            );
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_filled),
+            label: 'Utama',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mail_rounded),
+            label: 'Peti Masuk',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pin_drop_rounded),
+            label: 'Direktori',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profil',
+          ),
+        ],
+      ),
     );
   }
 
@@ -74,10 +161,11 @@ class VehicleInfoPage extends StatelessWidget {
       child: DropdownButtonFormField<String>(
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         ),
         hint: const Text('--Sila Pilih Kenderaan--'),
-        items: ['--Sila Pilih Kenderaan--','BMFXXXX'].map((String value) {
+        items: ['--Sila Pilih Kenderaan--', 'BMFXXXX'].map((String value) {
           return DropdownMenuItem<String>(
             value: value,
             child: Text(value),
@@ -89,57 +177,110 @@ class VehicleInfoPage extends StatelessWidget {
   }
 
   Widget _buildInfoSection() {
-    return Container(
-      width: double.infinity,
-      color: Colors.blue[900],
-      padding: const EdgeInsets.all(16),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text('SYAFIQA ANEESA BINTI JOHARI',
-              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-          SizedBox(height: 4),
-          Text('030303011234', style: TextStyle(color: Colors.white, fontSize: 16)),
-          SizedBox(height: 4),
-          Text('Orang Awam Malaysia', style: TextStyle(color: Colors.white70, fontSize: 14)),
-        ],
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        bottomLeft: Radius.circular(18),
+        bottomRight: Radius.circular(18),
       ),
-    );
-  }
-
-  Widget _buildTabButtons() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _buildTabButton('Lesen Memandu', false),
-          _buildTabButton('Lesen Kenderaan Motor', true),
-          _buildTabButton('Sijil Pemilikan Kenderaan', false),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTabButton(String text, bool isSelected) {
-    return Expanded(
       child: Container(
-        height: 40,
-        margin: const EdgeInsets.symmetric(horizontal: 4),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.blue[900] : Colors.white,
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: isSelected ? Colors.white : Colors.black,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
+        color: const Color(0xFF2B32B2),
+        padding: const EdgeInsets.all(18),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'SYAFIQA ANEESA BINTI JOHARI',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                  Text(
+                    'Orang Awam Malaysia',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    'syafigajohari@gmail.com',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    'STANDARD',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
-            textAlign: TextAlign.center,
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget licenseTab(
+      BuildContext context, String title, bool isSelected, Widget? page) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: page != null
+            ? () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => page))
+            : null,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black),
+            color: isSelected ? const Color(0xFF2B32B2) : Colors.white,
+          ),
+          child: Center(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTabButton(
+      BuildContext context, String text, bool isSelected, Widget? page) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: page != null
+            ? () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => page),
+                );
+              }
+            : null, // If `page` is null, do nothing
+        child: Container(
+          height: 40,
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          decoration: BoxDecoration(
+            color: isSelected ? Colors.blue[900] : Colors.white,
+            border: Border.all(color: Colors.black),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       ),
@@ -157,23 +298,6 @@ class VehicleInfoPage extends StatelessWidget {
         side: const BorderSide(color: Colors.black),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
-    );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      backgroundColor: Colors.blue[900],
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white60,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
-      type: BottomNavigationBarType.fixed,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Utama'),
-        BottomNavigationBarItem(icon: Icon(Icons.mail), label: 'Peti Masuk'),
-        BottomNavigationBarItem(icon: Icon(Icons.folder), label: 'Direktori'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
-      ],
     );
   }
 }
